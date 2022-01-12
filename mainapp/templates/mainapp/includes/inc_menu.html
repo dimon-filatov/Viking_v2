@@ -1,0 +1,33 @@
+
+<div class="nav_list">
+    <a href="#" class="nav_link {% if request.resolver_match.url_name == 'products' %}
+                active
+           {% endif %}">
+        <i class='bx bx-grid-alt nav_icon'></i>
+        <span class="nav_name">Штампы</span>
+    </a>
+    <a href="#" class="{% if request.resolver_match.url_name == 'users' %}
+                active
+           {% endif %} nav_link">
+        <i class='bx bx-timer nav_icon'></i>
+        <span class="nav_name">СРОЧНОЕ</span>
+    </a>
+    <a href="#" class="{% if request.resolver_match.url_name == 'users' %}
+                active
+           {% endif %} nav_link">
+        <i class='bx bx-vector nav_icon'></i>
+        <span class="nav_name">Клиенты</span>
+    </a>
+    <a href="#" class="{% if request.resolver_match.url_name == 'users' %}
+                active
+           {% endif %} nav_link">
+        <i class='bx bx-taxi nav_icon'></i>
+        <span class="nav_name">Доставки</span>
+    </a>
+    <a href="#" class="{% if request.resolver_match.url_name == 'users' %}
+                active
+           {% endif %} nav_link">
+        <i class='bx bx-user nav_icon'></i>
+        <span class="nav_name">Сотрудники</span>
+    </a>
+</div>
