@@ -73,7 +73,7 @@ class Delivery(models.Model):
     class Meta:
         verbose_name = 'Доставка'
         verbose_name_plural = 'Доставки'
-        ordering = ['delivery_name']
+        ordering = ['production']
 
     def __str__(self):
         return f'{self.production} - {self.delivery_options}'

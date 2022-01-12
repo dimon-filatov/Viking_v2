@@ -1,11 +1,11 @@
 data_material = {
     'customers': [
         {'name': 'ТЕСТ ДЛЯ ДЕБАГА', 'inn': 00000000,
-         'contacts_info': 'Телефон: (999) 999-99-99 Тест\bПочта: a@ma.aa'},
+         'contacts_info': 'Телефон: (999) 999-99-99\nПочта: a@ma.aa'},
         {'name': 'ПАЛ ДИЗАЙН', 'full_name': 'ООО "ПАЛ ДИЗАЙН"', 'inn': 7730630720,
-         'contacts_info': 'Телефон: (495) 782-33-32, 720-234-2\bПочта: 7823332@mail.ru'},
+         'contacts_info': 'Телефон: (495) 782-33-32, 720-234-2\nПочта: 7823332@mail.ru'},
         {'name': 'ПЕЧАТНЫЙ ДОМ (Прянишникова)', 'full_name': 'ООО "ПЕЧАТНЫЙ ДОМ"', 'inn': 7713325244,
-         'contacts_info': 'Телефон: (499) 976-44-89\bПочта: lvt2000@list.ru'},
+         'contacts_info': 'Телефон: (499) 976-44-89\nПочта: lvt2000@list.ru'},
     ],
     'product_stage_options': [
         {'id': 1, 'name': 'На просчёте'}, {'id': 2, 'name': 'Согласование'}, {'id': 3, 'name': 'Лазерный рез'},
@@ -21,19 +21,19 @@ data_material = {
         {'id': 4, 'delivery_name': 'Доставка с Производства'}, {'id': 5, 'delivery_name': 'Доставка из Москвы'},
         {'id': 6, 'delivery_name': 'Нет информации'},
     ],
-    'position': [
-        {'id': 1, 'delivery_name': 'Директор'}, {'id': 2, 'delivery_name': 'Администратор'},
-        {'id': 3, 'delivery_name': 'Менеджер'}, {'id': 4, 'delivery_name': 'Конструктор'},
-        {'id': 4, 'delivery_name': 'Бухгалтер'}, {'id': 5, 'delivery_name': 'Производство'},
+    'positions': [
+        {'id': 1, 'position_name': 'Директор'}, {'id': 2, 'position_name': 'Администратор'},
+        {'id': 3, 'position_name': 'Менеджер'}, {'id': 4, 'position_name': 'Конструктор'},
+        {'id': 4, 'position_name': 'Бухгалтер'}, {'id': 5, 'position_name': 'Производство'},
     ],
-    'material_type': [
+    'material_types': [
         {'id': 1, 'material_type': 'Фанера'}, {'id': 2, 'material_type': 'Биговальные ножи'},
         {'id': 3, 'material_type': 'Режущие ножи'}, {'id': 4, 'material_type': 'Перфорационные ножи'},
         {'id': 5, 'material_type': 'Комбинированные ножи'}, {'id': 6, 'material_type': 'Пробойники'},
         {'id': 7, 'material_type': 'Резина'}, {'id': 8, 'material_type': 'Другие ножи'},
         {'id': 9, 'material_type': 'Другое'},
     ],
-    'material': [
+    'materials': [
         {'id': 1, 'material_type': 1, 'material_name': 'Фанера 2/2 6мм'},
         {'id': 2, 'material_type': 1, 'material_name': 'Фанера 2/2 10мм'},
         {'id': 3, 'material_type': 1, 'material_name': 'Фанера 2/2 15мм'},

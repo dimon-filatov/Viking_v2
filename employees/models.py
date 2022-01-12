@@ -43,6 +43,8 @@ class Employer(models.Model):
         related_name='employer',
     )
 
+    is_deleted = models.BooleanField(default=False)
+
     class Meta:
         verbose_name = 'Сотрудник'
         verbose_name_plural = 'Сотрудники'

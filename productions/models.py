@@ -100,7 +100,7 @@ class ProductPrice(models.Model):
         Production,
         on_delete=models.PROTECT,
         verbose_name='Штамп',
-        related_name='product_stage',
+        related_name='product_price',
     )
     price = models.FloatField(
         verbose_name='Цена',
