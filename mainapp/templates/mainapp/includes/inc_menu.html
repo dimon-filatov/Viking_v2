@@ -12,7 +12,7 @@
         <i class='bx bx-timer nav_icon'></i>
         <span class="nav_name">СРОЧНОЕ</span>
     </a>
-    <a href="#" class="{% if request.resolver_match.url_name == 'users' %}
+    <a href="{% url 'customer:customer' %}" class="{% if request.resolver_match.url_name == 'customer' %}
                 active
            {% endif %} nav_link">
         <i class='bx bx-vector nav_icon'></i>
