@@ -18,6 +18,8 @@ class Production(models.Model):
     customers_number = models.CharField(
         verbose_name='Номер заказчика',
         max_length=100,
+        blank=True,
+        null=True,
     )
     constructor = models.ForeignKey(
         Employer,

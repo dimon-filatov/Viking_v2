@@ -18,8 +18,8 @@
                             <th>Название</th>
                             <th>Полное название</th>
                             <th>ИНН</th>
+                            <th>Количесто заказов</th>
                             <th>Редактировать</th>
-                            <th>Удалить</th>
                         </tr>
                         </thead>
                         <tfoot>
@@ -27,25 +27,21 @@
                             <th>Название</th>
                             <th>Полное название</th>
                             <th>ИНН</th>
+                            <th>Количесто заказов</th>
                             <th>Редактировать</th>
-                            <th>Удалить</th>
                         </tr>
                         </tfoot>
                         <tbody>
 
                         {% for customer in objects %}
                             <tr {% if customer.is_deleted %} style="opacity: 0.5;" {% endif %}>
-                                <td><a href="#" style="color: dodgerblue">{{ customer.name }}</a></td>
-                                <td><a href="#" style="color: dodgerblue">{{ customer.full_name }}</a></td>
-                                <td><a href="#" style="color: dodgerblue">{{ customer.inn }}</a></td>
+                                <td><a href="{% url 'customer:customer_info' customer.pk %}" style="color: dodgerblue">{{ customer.name }}</a></td>
+                                <td>{{ customer.full_name }}</td>
+                                <td>{{ customer.inn }}</td>
+                                <td><a href="#" style="color: dodgerblue">{{ customer.production.count }}</a></td>
                                 <td>
                                     <a href="#">
                                         <i class="fa fa-edit"></i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a {% if customer.is_deleted %} class="invisible" {% endif %} href="#">
-                                        <i class="fa fa-times-circle"></i>
                                     </a>
                                 </td>
                             </tr>

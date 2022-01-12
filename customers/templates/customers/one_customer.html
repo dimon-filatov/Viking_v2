@@ -1,0 +1,54 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <h1 class="mt-4">{{ customer.full_name }}</h1>
+                    <div class="card" style="width: 35rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ customer.name }}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><b>ПОЛНОЕ НАЗВАНИЕ:</b><br>{{ customer.full_name }}</li>
+                            <li class="list-group-item"><b>ИНН:</b><br>{{ customer.inn }}</li>
+                            <li class="list-group-item"><b>КОНТАКТНАЯ ИНФОРМАЦИЯ:</b><br>{{ customer.contacts_info }}
+                            </li>
+                            <li class="list-group-item"><b>КОММЕНТАРИЙ:</b><br>{{ customer.comment }}</li>
+                            <li class="list-group-item"><b>ИНДИВИДУАЛЬНЫЕ
+                                УСЛОВИЯ:</b><br>{{ customer.if_individual_price }}</li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Адреса доставок</a>
+                            <a href="#" class="card-link">Штампы</a>
+                            <a href="#" class="card-link">Редактировать</a>
+                            <a href="#" class="card-link text-danger">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card-header">Последние 15 штампов</div>
+                    <table class="table table-bordered" id="dataTable">
+                        <thead>
+                        <tr>
+                            <th>Номер штампа</th>
+                            <th>Дата заказа</th>
+                            <th>Стадия</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>Номер штампа</th>
+                            <th>Дата заказа</th>
+                            <th>Стадия</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
