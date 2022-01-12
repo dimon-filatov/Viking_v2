@@ -26,7 +26,7 @@ class Material(models.Model):
         verbose_name='Тип материала',
         related_name='materials',
     )
-    material = models.CharField(
+    material_name = models.CharField(
         max_length=100,
         verbose_name='Название',
         unique=True,
@@ -38,7 +38,7 @@ class Material(models.Model):
         ordering = ['material_type']
 
     def __str__(self):
-        return f'{self.material_type} - {self.material}'
+        return f'{self.material_type} - {self.material_name}'
 
 
 class ProductionMaterials(models.Model):
