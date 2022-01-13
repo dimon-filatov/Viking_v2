@@ -23,8 +23,8 @@
                         <div class="card-body">
                             <a href="#" class="card-link">Адреса доставок</a>
                             <a href="#" class="card-link">Штампы</a>
-                            <a href="#" class="card-link">Редактировать</a>
-                            <a href="#" class="card-link text-danger">Удалить</a>
+                            <a href="{% url 'customer:customer_update' pk=customer.id %}" class="card-link">Редактировать</a>
+                            <a href="{% url 'customer:customer_delete' pk=customer.id %}" class="card-link text-danger">Удалить</a>
                         </div>
                     </div>
                 </div>
@@ -39,14 +39,18 @@
                         </tr>
                         </thead>
                         <tfoot>
-                        <tr>
-                            <th>Номер штампа</th>
-                            <th>Дата заказа</th>
-                            <th>Стадия</th>
-                        </tr>
                         </tfoot>
                         <tbody>
+                        {% for product in products %}
+                            <tr {% if product.is_deleted %} style="opacity: 0.5;" {% endif %}>
+                                <td><a href="#" style="color: dodgerblue">{{ product.our_number }}</a></td>
+                                <td>Дата</td>
+                                <td>Стадия</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
                     </table>
+                <div class="card-header"><a href="#" class="card-link">Показать все</a></div>
                 </div>
             </div>
         </div>

@@ -33,7 +33,7 @@ class Production(models.Model):
         verbose_name='Менеджер',
         related_name='manager_production',
     )
-    created = models.DateTimeField(
+    created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Дата создания',
     )
@@ -104,8 +104,11 @@ class ProductPrice(models.Model):
         verbose_name='Штамп',
         related_name='product_price',
     )
-    price = models.FloatField(
+    price = models.DecimalField(
         verbose_name='Цена',
+        max_digits=8,
+        decimal_places=2,
+        default=0,
     )
 
     class Meta:
