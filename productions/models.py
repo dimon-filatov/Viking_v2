@@ -55,6 +55,7 @@ class Production(models.Model):
         return f'{self.our_number} | {self.customer}'
 
 
+
 class ProductStageOptions(models.Model):
     name = models.CharField(
         max_length=40,

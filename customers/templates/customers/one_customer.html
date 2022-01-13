@@ -41,7 +41,7 @@
                         <tfoot>
                         </tfoot>
                         <tbody>
-                        {% for product in products %}
+                        {% for product in customer.production.all|slice:":15" %}
                             <tr {% if product.is_deleted %} style="opacity: 0.5;" {% endif %}>
                                 <td><a href="#" style="color: dodgerblue">{{ product.our_number }}</a></td>
                                 <td>Дата</td>

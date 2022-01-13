@@ -30,7 +30,6 @@ class CustomerDetailView(DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(CustomerDetailView, self).get_context_data()
         context['title'] = self.object
-        context['products'] = Production.objects.all()[:15]
 
         return context
 
