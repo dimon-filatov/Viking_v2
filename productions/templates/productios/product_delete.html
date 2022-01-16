@@ -1,0 +1,25 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="col-md-8 offset-md-2">
+        <p class=""> Осторожно! Вы точно хотите удалть штамп - {{ object }} ?</p>
+        <div class="container">
+            <form class="form-horizontal" action="{% url 'product:products_delete' object.pk %}" method="post"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                <p>Причина удаления<br>
+                    <textarea name="comment" cols="40" rows="3"></textarea></p>
+                    <input class="btn btn-danger m-3" type="submit" value="Удалить">
+            </form>
+                    <a href="{% url 'product:products' %}" class="m-3">
+                        <button class="btn btn-round btn-success">
+                            Отмена
+                        </button>
+                    </a>
+
+        </div>
+    </div>
+    </div>
+{% endblock %}

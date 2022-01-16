@@ -1,4 +1,5 @@
 from django.db import models
+from django.http import request
 
 from customers.models import Customer
 from employees.models import Employer
@@ -33,6 +34,10 @@ class Production(models.Model):
         verbose_name='Менеджер',
         related_name='manager_production',
     )
+    comment = models.TextField(
+        blank=True,
+        verbose_name='Комментарий',
+    )
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Дата создания',
@@ -46,6 +51,13 @@ class Production(models.Model):
         blank=True,
     )
 
+    def delete(self, using=None, keep_parents=False):
+        self.is_deleted = True
+        stage = ProductStage.objects.get(production=self)
+        stage.product_stage = ProductStageOptions.objects.get(pk=14)
+        stage.save()
+        self.save()
+
     class Meta:
         verbose_name = 'Штамп'
         verbose_name_plural = 'Штампы'
@@ -53,7 +65,6 @@ class Production(models.Model):
 
     def __str__(self):
         return f'{self.our_number} | {self.customer}'
-
 
 
 class ProductStageOptions(models.Model):
@@ -82,7 +93,6 @@ class ProductStage(models.Model):
         ProductStageOptions,
         on_delete=models.PROTECT,
         verbose_name='Стадия',
-        related_name='product_stage',
     )
     date_of_last_change = models.DateField(
         verbose_name='Дата последнего изменения',
@@ -95,7 +105,7 @@ class ProductStage(models.Model):
         ordering = ['production']
 
     def __str__(self):
-        return f'{self.production} - {self.product_stage}'
+        return f'{self.product_stage}'
 
 
 class ProductPrice(models.Model):

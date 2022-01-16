@@ -30,6 +30,10 @@ class Customer(models.Model):
 
     is_deleted = models.BooleanField(default=False)
 
+    def delete(self, using=None, keep_parents=False):
+        self.is_deleted = True
+        self.save()
+
     class Meta:
         verbose_name = 'Заказчик'
         verbose_name_plural = 'Заказчики'

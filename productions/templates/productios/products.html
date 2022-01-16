@@ -1,0 +1,77 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <h1 class="mt-4">Штампы</h1>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table mr-1"></i>
+                    Все штампы
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>Номер</th>
+                                <th>Заказчик</th>
+                                <th>Статус</th>
+                                <th>Дата заказа</th>
+                                <th>Дата сдачи заказа</th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th>Номер</th>
+                                <th>Заказчик</th>
+                                <th>Статус</th>
+                                <th>Дата заказа</th>
+                                <th>Дата сдачи заказа</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+
+                            {% for product in objects %}
+                                <tr {% if product.is_deleted %} style="opacity: 0.5;" {% endif %}>
+                                    <td><a href="{% url 'product:product_info' product.pk %}"
+                                           style="color: dodgerblue">{{ product.our_number }}</a></td>
+                                    <td><a href="#" style="color: dodgerblue">{{ product.customer }}</a></td>
+                                    <td>{{ product.product_stage }}</td>
+                                    <td>{{ product.created_at|date }}</td>
+                                    <td>{% if product.is_deleted %}---{% else %}Дата сдачи{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <div class="pagination">
+                        <span class="step-links">
+                            {% if page_obj.has_previous %}
+                                <a href="?page=1">&laquo; first</a>
+                                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                            </span>
+
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                            {% endif %}
+                        </span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'product:product_create' %}">
+                        <button class="btn btn-success">Создать новый заказ</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

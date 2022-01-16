@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <h1 class="mt-4">{{ customer.full_name }}</h1>
+                    <h1 class="mt-4">{{ customer.full_name }} {% if customer.is_deleted %} <b class="text-danger"> - УДАЛЁН</b> {% endif %} </h1>
                     <div class="card" style="width: 35rem;">
                         <div class="card-body">
                             <h5 class="card-title">{{ customer.name }}</h5>
@@ -23,8 +23,10 @@
                         <div class="card-body">
                             <a href="#" class="card-link">Адреса доставок</a>
                             <a href="#" class="card-link">Штампы</a>
+                            {% if not customer.is_deleted %}
                             <a href="{% url 'customer:customer_update' pk=customer.id %}" class="card-link">Редактировать</a>
                             <a href="{% url 'customer:customer_delete' pk=customer.id %}" class="card-link text-danger">Удалить</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -43,14 +45,15 @@
                         <tbody>
                         {% for product in customer.production.all|slice:":15" %}
                             <tr {% if product.is_deleted %} style="opacity: 0.5;" {% endif %}>
-                                <td><a href="#" style="color: dodgerblue">{{ product.our_number }}</a></td>
-                                <td>Дата</td>
-                                <td>Стадия</td>
+                                <td><a href="{% url 'product:product_info' product.pk %}"
+                                       style="color: dodgerblue">{{ product.our_number }}</a></td>
+                                <td>{{ product.created_at }}</td>
+                                <td>{{ product.product_stage }}</td>
                             </tr>
                         {% endfor %}
                         </tbody>
                     </table>
-                <div class="card-header"><a href="#" class="card-link">Показать все</a></div>
+                    <div class="card-header"><a href="#" class="card-link">Показать все</a></div>
                 </div>
             </div>
         </div>

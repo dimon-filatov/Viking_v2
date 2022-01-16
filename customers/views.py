@@ -50,7 +50,6 @@ class CustomerUpdateView(UpdateView):
     model = Customer
     template_name = 'customers/customer_update.html'
     form_class = CustomerEditForm
-    success_url = reverse_lazy('customer:customer')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(CustomerUpdateView, self).get_context_data()
@@ -72,10 +71,3 @@ class CustomerDeleteView(DeleteView):
         context['title'] = 'продукт/удаление'
 
         return context
-
-    def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        self.object.is_deleted = True
-        self.object.save()
-
-        return HttpResponseRedirect(self.get_success_url())

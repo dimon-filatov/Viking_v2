@@ -1,0 +1,37 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <h1 class="mt-4">{{ product.our_number }} - {{ product.customer }}</h1>
+                    <div class="card" style="width: 35rem;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><b>НАШ НОМЕР:</b><br>{{ product.our_number }}</li>
+                            <li class="list-group-item"><b>НОМЕР ЗАКАЗЧИКА</b><br>{{ product.customers_number }}</li>
+                            <li class="list-group-item"><b>ЗАКАЗЧИК:</b><br><a
+                                    href="{% url 'customer:customer_info' product.customer.pk %}"
+                                    style="color: dodgerblue">{{ product.customer }}</a></li>
+                            <li class="list-group-item"><b>КОММЕНТАРИЙ:</b><br>{{ product.comment }}</li>
+                            <li class="list-group-item"><b>КОНСТРУКТОР:</b> {{ product.constructor }}<br>
+                                <b>МЕНЕДЖЕР</b> {{ product.manager }}</li>
+                            {% if product.is_deleted %}
+                                <li class="list-group-item"><b class="text-danger">ПРИЧИНА
+                                    УДАЛЕНИЯ:</b><br>{{ product.comment_for_deleted }}</li>
+                            <li class="list-group-item"><b class="text-danger">ДАТА УДАЛЕНИЯ:</b><br>{{ product.product_stage.date_of_last_change }}</li>{% endif %}
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Все штампы заказчика</a>
+                            {% if not product.is_deleted %}<a href="{% url 'product:product_update' product.pk %}"
+                                                              class="card-link">Редактировать</a>{% endif %}
+                            {% if not product.is_deleted %}
+                                <a href="{% url 'product:products_delete' product.pk %}" class="card-link text-danger">Удалить</a>{% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

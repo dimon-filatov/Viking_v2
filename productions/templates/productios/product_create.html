@@ -1,0 +1,10 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h2 class="text-center text-uppercase font-weight-bold mb-5">Создание нового штампа</h2>
+    <div class="container">
+        {% crispy form "bootstrap4" %}
+    </div>
+{% endblock %}

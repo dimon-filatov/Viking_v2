@@ -26,6 +26,10 @@ data_material = {
         {'id': 3, 'position_name': 'Менеджер'}, {'id': 4, 'position_name': 'Конструктор'},
         {'id': 4, 'position_name': 'Бухгалтер'}, {'id': 5, 'position_name': 'Производство'},
     ],
+    'employees': [
+        {'id': 1, 'surname': 'Testov', 'name': 'Test', 'patronymic': 'Testovich', 'birthday': '01.01.1990',
+         'position': 4},
+    ],
     'material_types': [
         {'id': 1, 'material_type': 'Фанера'}, {'id': 2, 'material_type': 'Биговальные ножи'},
         {'id': 3, 'material_type': 'Режущие ножи'}, {'id': 4, 'material_type': 'Перфорационные ножи'},
