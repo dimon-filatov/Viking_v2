@@ -37,7 +37,7 @@
                                            style="color: dodgerblue">{{ customer.name }}</a></td>
                                     <td>Юр названия</td>
                                     <td><a href="#" style="color: dodgerblue">{{ customer.production.count }}</a></td>
-                                    <td>Дата</td>
+                                    <td>{{ customer.production.first.created_at|date }}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
