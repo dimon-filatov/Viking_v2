@@ -9,7 +9,7 @@ from customers.models import Customer
 class CustomerEditForm(forms.ModelForm):
     class Meta:
         model = Customer
-        fields = ('name', 'full_name', 'inn', 'contacts_info', 'comment', 'if_individual_price',)
+        fields = ('name', 'contacts_info', 'comment', 'if_individual_price',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -22,8 +22,6 @@ class CustomerEditForm(forms.ModelForm):
         self.helper.layout = Layout(
             Row(
                 Column('name', css_class='col-2'),
-                Column('full_name', css_class='col-2'),
-                Column('inn', css_class='col-2'),
             ),
             Row(
                 Column('contacts_info', css_class='col-2 mr-5'),

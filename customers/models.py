@@ -7,15 +7,6 @@ class Customer(models.Model):
         verbose_name='Рабочее название',
         unique=True,
     )
-    full_name = models.CharField(
-        max_length=50,
-        verbose_name='Полное название',
-        unique=True,
-    )
-    inn = models.IntegerField(
-        verbose_name='ИНН',
-        unique=True,
-    )
     contacts_info = models.TextField(
         verbose_name='Контактная информация',
     )
@@ -41,3 +32,35 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class CustomerFull(models.Model):
+    customer = models.ForeignKey(
+        Customer,
+        on_delete=models.PROTECT,
+        verbose_name='Заказчик',
+        related_name='full_name',
+    )
+    full_name = models.CharField(
+        max_length=50,
+        verbose_name='Полное название',
+        unique=True,
+    )
+    inn = models.IntegerField(
+        verbose_name='ИНН',
+        unique=True,
+    )
+
+    is_deleted = models.BooleanField(default=False)
+
+    def delete(self, using=None, keep_parents=False):
+        self.is_deleted = True
+        self.save()
+
+    class Meta:
+        verbose_name = 'Юр. лицо'
+        verbose_name_plural = 'Юр. лица'
+        ordering = ['customer']
+
+    def __str__(self):
+        return self.full_name

@@ -25,14 +25,8 @@ class Command(BaseCommand):
 
         new_customers = data.data_material['customers']
         for customer in new_customers:
-            if 'full_name' in customer:
-                full_name = customer['full_name']
-            else:
-                full_name = ''
             new_customer = Customer(
                 name=customer['name'],
-                full_name=full_name,
-                inn=customer['inn'],
                 contacts_info=customer['contacts_info'],
             )
             new_customer.save()

@@ -6,14 +6,17 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <h1 class="mt-4">{{ customer.full_name }} {% if customer.is_deleted %} <b class="text-danger"> - УДАЛЁН</b> {% endif %} </h1>
+                    <h1 class="mt-4">{{ customer.name }} {% if customer.is_deleted %} <b class="text-danger"> - УДАЛЁН</b> {% endif %} </h1>
                     <div class="card" style="width: 35rem;">
                         <div class="card-body">
                             <h5 class="card-title">{{ customer.name }}</h5>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><b>ПОЛНОЕ НАЗВАНИЕ:</b><br>{{ customer.full_name }}</li>
-                            <li class="list-group-item"><b>ИНН:</b><br>{{ customer.inn }}</li>
+                            <li class="list-group-item"><b>ПОЛНЫЕ НАЗВАНИЯ:</b><br>
+                                {% for full_name in customer.full_name.all %}
+                                {{ full_name }}<br>
+                                {% endfor %}
+                            </li>
                             <li class="list-group-item"><b>КОНТАКТНАЯ ИНФОРМАЦИЯ:</b><br>{{ customer.contacts_info }}
                             </li>
                             <li class="list-group-item"><b>КОММЕНТАРИЙ:</b><br>{{ customer.comment }}</li>

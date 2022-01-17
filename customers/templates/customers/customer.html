@@ -16,8 +16,7 @@
                             <thead>
                             <tr>
                                 <th>Название</th>
-                                <th>Полное название</th>
-                                <th>ИНН</th>
+                                <th>Юр названия</th>
                                 <th>Количесто заказов</th>
                                 <th>Дата последнего заказа</th>
                             </tr>
@@ -25,8 +24,7 @@
                             <tfoot>
                             <tr>
                                 <th>Название</th>
-                                <th>Полное название</th>
-                                <th>ИНН</th>
+                                <th>Юр названия</th>
                                 <th>Количесто заказов</th>
                                 <th>Дата последнего заказа</th>
                             </tr>
@@ -37,8 +35,7 @@
                                 <tr {% if customer.is_deleted %} style="opacity: 0.5;" {% endif %}>
                                     <td><a href="{% url 'customer:customer_info' customer.pk %}"
                                            style="color: dodgerblue">{{ customer.name }}</a></td>
-                                    <td>{{ customer.full_name }}</td>
-                                    <td>{{ customer.inn }}</td>
+                                    <td>Юр названия</td>
                                     <td><a href="#" style="color: dodgerblue">{{ customer.production.count }}</a></td>
                                     <td>Дата</td>
                                 </tr>
