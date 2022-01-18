@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="row">
-    <p> Осторожно! Вы точно хотите удалть клиента - {{ object.name }} ?</p>
+    <p> Осторожно! Вы точно хотите удалить клиента - {{ object.name }} ?</p>
         <form class="form-horizontal" action="{% url 'customer:customer_delete' pk=customer.id %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
@@ -17,6 +17,5 @@
                 </button>
             </a>
 
-    </div>
     </div>
 {% endblock %}

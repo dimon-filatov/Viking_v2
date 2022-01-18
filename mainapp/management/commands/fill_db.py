@@ -2,7 +2,7 @@ from datetime import datetime
 
 from django.core.management import BaseCommand
 import data
-from customers.models import Customer
+from customers.models import Customer, CustomerFull
 from deliveries.models import DeliveryOptions
 from employees.models import Position, Employer
 from materials.models import MaterialType, Material
@@ -15,6 +15,7 @@ class Command(BaseCommand):
         ProductStage.objects.all().delete()
         Production.objects.all().delete()
         ProductStage.objects.all().delete()
+        CustomerFull.objects.all().delete()
         Customer.objects.all().delete()
         ProductStageOptions.objects.all().delete()
         DeliveryOptions.objects.all().delete()

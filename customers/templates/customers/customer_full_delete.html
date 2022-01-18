@@ -1,0 +1,23 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="row">
+        <p> Осторожно! Вы точно хотите удалить клиента - {{ object.full_name }} ?</p>
+        <form class="form-horizontal" action="{% url 'customer:customer_full_delete' pk=customer.id %}" method="post"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <input class="btn btn-danger m-3" type="submit" value="Удалить">
+        </form>
+
+        <a href="{% url 'customer:customer_full' %}" class="m-3">
+            <button class="btn btn-round btn-success">
+                Отмена
+            </button>
+        </a>
+
+    </div>
+
+{% endblock %}

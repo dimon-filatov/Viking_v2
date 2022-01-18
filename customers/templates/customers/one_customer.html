@@ -12,7 +12,7 @@
                             <h5 class="card-title">{{ customer.name }}</h5>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><b>ПОЛНЫЕ НАЗВАНИЯ:</b><br>
+                            <li class="list-group-item"><b>ЮР. НАЗВАНИЯ:</b><br>
                                 {% for full_name in customer.full_name.all %}
                                 {{ full_name }}<br>
                                 {% endfor %}
@@ -25,7 +25,9 @@
                         </ul>
                         <div class="card-body">
                             <a href="#" class="card-link">Адреса доставок</a>
+                            <a href="#" class="card-link">Юр. названия</a>
                             <a href="#" class="card-link">Штампы</a>
+                            <br>
                             {% if not customer.is_deleted %}
                             <a href="{% url 'customer:customer_update' pk=customer.id %}" class="card-link">Редактировать</a>
                             <a href="{% url 'customer:customer_delete' pk=customer.id %}" class="card-link text-danger">Удалить</a>
