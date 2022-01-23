@@ -27,7 +27,11 @@ class DeliveryAddress(models.Model):
         ordering = ['customer']
 
     def __str__(self):
-        return self.customer
+        return self.address
+
+    def delete(self, using=None, keep_parents=False):
+        self.is_deleted = True
+        self.save()
 
 
 class DeliveryOptions(models.Model):
@@ -46,6 +50,10 @@ class DeliveryOptions(models.Model):
 
     def __str__(self):
         return self.delivery_name
+
+    def delete(self, using=None, keep_parents=False):
+        self.is_deleted = True
+        self.save()
 
 
 class Delivery(models.Model):
@@ -77,3 +85,7 @@ class Delivery(models.Model):
 
     def __str__(self):
         return f'{self.production} - {self.delivery_options}'
+
+    def delete(self, using=None, keep_parents=False):
+        self.is_deleted = True
+        self.save()

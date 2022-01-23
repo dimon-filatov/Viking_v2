@@ -4,15 +4,15 @@
 
 {% block content %}
     <div class="row">
-        <p> Осторожно! Вы точно хотите удалить Юр. название - {{ object.full_name }} ?</p>
-        <form class="form-horizontal" action="{% url 'customer:customer_full_delete' pk=object.pk %}" method="post"
+        <p> Осторожно! Вы точно хотите удалить адрес - {{ object.address }} ?</p>
+        <form class="form-horizontal" action="{% url 'delivery:customer_delivery_address_delete' pk=object.pk %}" method="post"
               enctype="multipart/form-data">
             {% csrf_token %}
 
             <input class="btn btn-danger m-3" type="submit" value="Удалить">
         </form>
 
-        <a href="{% url 'customer:customer_full' object.customer.pk %}" class="m-3">
+        <a href="{% url 'delivery:customer_delivery_address' object.customer.pk %}" class="m-3">
             <button class="btn btn-round btn-success">
                 Отмена
             </button>

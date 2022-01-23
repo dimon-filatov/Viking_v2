@@ -55,6 +55,6 @@ class CustomerFullEditForm(forms.ModelForm):
             ),
             FormActions(
                 Submit('submit', 'Сохранить', css_class='btn btn-success'),
-                HTML('<a class="btn btn-danger" href="/customer/customer_full">Отмена</a>')
+                HTML('<a class="btn btn-danger" href="/">Отмена</a>')
             ),
         )

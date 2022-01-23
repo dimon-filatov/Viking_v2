@@ -1,8 +1,10 @@
 from django.db import models
 
+from mainapp.models import LowerField
+
 
 class Customer(models.Model):
-    name = models.CharField(
+    name = LowerField(
         max_length=30,
         verbose_name='Рабочее название',
         unique=True,
@@ -41,7 +43,7 @@ class CustomerFull(models.Model):
         verbose_name='Заказчик',
         related_name='full_name',
     )
-    full_name = models.CharField(
+    full_name = LowerField(
         max_length=50,
         verbose_name='Полное название',
         unique=True,

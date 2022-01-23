@@ -4,41 +4,40 @@
 {% block content %}
     <main>
         <div class="container-fluid">
-            <h1 class="mt-4">Юр. Названия компании <b>{{ company_name|upper }}</b></h1>
+            <h1 class="mt-4">Адреса доставки для компании <b>{{ company_name|upper }}</b></h1>
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
-                                <th>Юр названия</th>
-                                <th>ИНН</th>
+                                <th>Адрес</th>
+                                <th>Контакты</th>
                                 <th>Редактировать</th>
                                 <th>Удалить</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
-                                <th>Юр названия</th>
-                                <th>ИНН</th>
+                                <th>Адрес</th>
+                                <th>Контакты</th>
                                 <th>Редактировать</th>
                                 <th>Удалить</th>
                             </tr>
                             </tfoot>
                             <tbody>
-
-                            {% for customer in customers_full_lst %}
-                                <tr {% if customer.is_deleted %} style="opacity: 0.5;" {% endif %}>
-                                    <td>{{ customer.full_name|upper }}</td>
-                                    <td>{{ customer.inn }}</td>
+                            {% for address_from_lst in customers_address_for_delivery_lst %}
+                                <tr {% if address_from_lst.is_deleted %} style="opacity: 0.5;" {% endif %}>
+                                    <td>{{ address_from_lst.address }}</td>
+                                    <td>{{ address_from_lst.contacts }}</td>
                                     <td>
-                                        <a {% if customer.is_deleted %} class="invisible" {% endif %} href="{% url 'customer:customer_full_update' pk=customer.id %}">
+                                        <a {% if address_from_lst.is_deleted %} class="invisible" {% endif %} href="{% url 'delivery:customer_delivery_address_update' pk=address_from_lst.pk %}">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a {% if customer.is_deleted %} class="invisible" {% endif %}
-                                                                        href="{% url 'customer:customer_full_delete' pk=customer.pk %}">
+                                        <a {% if address_from_lst.is_deleted %} class="invisible" {% endif %}
+                                                                        href="{% url 'delivery:customer_delivery_address_delete' pk=address_from_lst.pk %}">
                                             <i class="fa fa-times-circle"></i>
                                         </a>
                                     </td>
@@ -71,8 +70,8 @@
                     <a href="{% url 'customer:customer_info' pk_of_customer %}">
                         <button class="btn btn-primary">Назад</button>
                     </a>
-                    <a href="{% url 'customer:customer_full_create' pk_of_customer %}">
-                        <button class="btn btn-success">Создать новое Юр. лицо</button>
+                    <a href="{% url 'delivery:customer_delivery_address_create' pk_of_customer %}">
+                        <button class="btn btn-success">Новый адресс</button>
                     </a>
                 </div>
             </div>

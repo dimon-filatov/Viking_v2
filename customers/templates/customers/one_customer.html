@@ -6,15 +6,16 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <h1 class="mt-4">{{ customer.name }} {% if customer.is_deleted %} <b class="text-danger"> - УДАЛЁН</b> {% endif %} </h1>
+                    <h1 class="mt-4">{{ customer.name|upper }} {% if customer.is_deleted %}
+                        <b class="text-danger"> - УДАЛЁН</b> {% endif %} </h1>
                     <div class="card" style="width: 35rem;">
                         <div class="card-body">
-                            <h5 class="card-title">{{ customer.name }}</h5>
+                            <h5 class="card-title">{{ customer.name|upper }}</h5>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><b>ЮР. НАЗВАНИЯ:</b><br>
-                                {% for full_name in customer.full_name.all %}
-                                {{ full_name }}<br>
+                                {% for full_name in full_name_lst %}
+                                    {{ full_name|upper }}<br>
                                 {% endfor %}
                             </li>
                             <li class="list-group-item"><b>КОНТАКТНАЯ ИНФОРМАЦИЯ:</b><br>{{ customer.contacts_info }}
@@ -22,15 +23,20 @@
                             <li class="list-group-item"><b>КОММЕНТАРИЙ:</b><br>{{ customer.comment }}</li>
                             <li class="list-group-item"><b>ИНДИВИДУАЛЬНЫЕ
                                 УСЛОВИЯ:</b><br>{{ customer.if_individual_price }}</li>
+                            <li class="list-group-item"><b>АДРЕСА ДОСТАВОК:</b><br>
+                                {% for address in delivery_address_lst %}
+                                    {{ address|upper }}<br><br>
+                                {% endfor %}</li>
                         </ul>
                         <div class="card-body">
-                            <a href="#" class="card-link">Адреса доставок</a>
-                            <a href="#" class="card-link">Юр. названия</a>
+                            <a href="{% url 'delivery:customer_delivery_address' customer.pk %}" class="card-link">Адреса доставок</a>
+                            <a href="{% url 'customer:customer_full' customer.pk %}" class="card-link">Юр. названия</a>
                             <a href="#" class="card-link">Штампы</a>
                             <br>
                             {% if not customer.is_deleted %}
-                            <a href="{% url 'customer:customer_update' pk=customer.id %}" class="card-link">Редактировать</a>
-                            <a href="{% url 'customer:customer_delete' pk=customer.id %}" class="card-link text-danger">Удалить</a>
+                                <a href="{% url 'customer:customer_update' pk=customer.id %}" class="card-link">Редактировать</a>
+                                <a href="{% url 'customer:customer_delete' pk=customer.id %}"
+                                   class="card-link text-danger">Удалить</a>
                             {% endif %}
                         </div>
                     </div>
